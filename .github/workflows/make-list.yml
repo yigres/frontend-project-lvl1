@@ -15,13 +15,13 @@ jobs:
     steps:
       - name: npm install, build
         # Install and build project
-        run: |
+        run: 
           make install
         # Add environment variables
         env:
           CI: true
       - name: Run linter
         # Run Linter
-        run: |
+        run: 
           make lint
       

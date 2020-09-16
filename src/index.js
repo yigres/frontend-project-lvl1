@@ -8,7 +8,7 @@ const greetUser = () => {
 };
 
 const getRandomNumber = () => {
-  const max = 20;
+  const max = 10;
   return Math.floor(Math.random() * Math.floor(max));
 };
 

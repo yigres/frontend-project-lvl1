@@ -7,10 +7,7 @@ const greetUser = () => {
   return name;
 };
 
-const getRandomNumber = () => {
-  const max = 10;
-  return Math.floor(Math.random() * Math.floor(max));
-};
+const getRandomNumber = (max = 10) => Math.floor(Math.random() * Math.floor(max));
 
 const errorAnswer = (answerUser, rightResult) => {
   console.log(`"${answerUser}" is wrong answer ;(. Correct answer was "${rightResult}".`);

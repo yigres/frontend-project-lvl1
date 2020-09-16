@@ -23,4 +23,4 @@ export default () => {
 
   console.log('Correct!');
   return 1;
-}
+};

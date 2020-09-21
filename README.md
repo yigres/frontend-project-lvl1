@@ -1,7 +1,6 @@
 # frontend-project-lvl1  
 
-[![Maintainability](https://api.codeclimate.com/v1/badges/a99a88d28ad37a79dbf6/maintainability)](https://codeclimate.com/github/codeclimate/codeclimate/maintainability)
-<!-- ![brain-games CI](https://github.com/yigres/frontend-project-lvl1/workflows/brain-games%20CI/badge.svg) -->
+[![Maintainability](https://api.codeclimate.com/v1/badges/fc6d30b6c1ef03eb4ce4/maintainability)](https://codeclimate.com/github/yigres/frontend-project-lvl1/maintainability)
 [![brain-games CI](https://github.com/yigres/frontend-project-lvl1/workflows/brain-games%20CI/badge.svg)](https://github.com/yigres/frontend-project-lvl1/actions)
     
 **brain-even**

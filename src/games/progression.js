@@ -1,28 +1,31 @@
-import readlineSync from 'readline-sync';
-import { getRandomNumber, errorAnswer } from '../index.js';
+import runEngine from '../index.js';
+import getRandomNumber from '../randomNumber.js';
 
-export default () => {
+const description = 'What number is missing in the progression?';
+
+const generateQuestionAndAnswer = () => {
   const progressionArray = [];
-  const number1 = getRandomNumber();
-  const difference = getRandomNumber();
+  const number1 = getRandomNumber(0, 10);
+  const difference = getRandomNumber(0, 10);
+  const progressionLength = 10;
 
-  for (let i = 0; i < 10; i += 1) {
+  for (let i = 0; i < progressionLength; i += 1) {
     progressionArray[i] = number1 + i * difference;
   }
 
-  const randomIndex = getRandomNumber();
+  const randomIndex = getRandomNumber(0, progressionLength);
   const rightAnswer = progressionArray.splice(randomIndex, 1, '..');
 
-  const questionString = progressionArray.join(' ');
-  console.log(`Question: ${questionString}`);
+  const progression = progressionArray.join(' ');
 
-  const userAnswer = readlineSync.question('Your answer: ');
+  const question = {
+    text: `Question: ${progression}`,
+    rightAnswer: String(rightAnswer),
+  };
 
-  if (userAnswer !== rightAnswer.toString()) {
-    errorAnswer(userAnswer, rightAnswer);
-    return 0;
-  }
+  return question;
+};
 
-  console.log('Correct!');
-  return 1;
+export default () => {
+  runEngine(description, generateQuestionAndAnswer);
 };

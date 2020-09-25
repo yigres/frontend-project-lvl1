@@ -1,5 +1,7 @@
-import readlineSync from 'readline-sync';
-import { getRandomNumber, errorAnswer } from '../index.js';
+import runEngine from '../index.js';
+import getRandomNumber from '../randomNumber.js';
+
+const description = 'Answer "yes" if given number is prime. Otherwise answer "no".';
 
 const isPrime = (num) => {
   if (num === 0) {
@@ -8,26 +10,24 @@ const isPrime = (num) => {
 
   for (let i = 2; i < Math.sqrt(num); i += 1) {
     if (num % i === 0) {
-      return 'no';
+      return false;
     }
   }
 
-  return 'yes';
+  return true;
+};
+
+const generateQuestionAndAnswer = () => {
+  const number = getRandomNumber(0, 100);
+
+  const question = {
+    text: `Question: ${number}`,
+    rightAnswer: isPrime(number) ? 'yes' : 'no',
+  };
+
+  return question;
 };
 
 export default () => {
-  const randomNumber = getRandomNumber(100);
-
-  console.log(`Question: ${randomNumber}`);
-
-  const rightAnswer = isPrime(randomNumber);
-  const userAnswer = readlineSync.question('Your answer: ');
-
-  if (userAnswer !== rightAnswer) {
-    errorAnswer(userAnswer, rightAnswer);
-    return 0;
-  }
-
-  console.log('Correct!');
-  return 1;
+  runEngine(description, generateQuestionAndAnswer);
 };

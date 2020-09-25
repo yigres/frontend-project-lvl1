@@ -1,35 +1,36 @@
-import readlineSync from 'readline-sync';
-import { getRandomNumber, errorAnswer } from '../index.js';
+import runEngine from '../index.js';
+import getRandomNumber from '../randomNumber.js';
 
-export default () => {
+const description = 'What is the result of the expression?';
+
+const generateQuestionAndAnswer = () => {
   const operators = ['+', '-', '*'];
-  const randomNumber1 = getRandomNumber();
-  const randomNumber2 = getRandomNumber();
+  const operand1 = getRandomNumber(0, 20);
+  const operand2 = getRandomNumber(0, 20);
   const operator = operators[Math.floor(Math.random() * operators.length)];
   let rightAnswer = 0;
 
   switch (operator) {
     case '+':
-      rightAnswer = randomNumber1 + randomNumber2;
+      rightAnswer = operand1 + operand2;
       break;
     case '-':
-      rightAnswer = randomNumber1 - randomNumber2;
+      rightAnswer = operand1 - operand2;
       break;
     case '*':
-      rightAnswer = randomNumber1 * randomNumber2;
+      rightAnswer = operand1 * operand2;
       break;
     // no default
   }
 
-  console.log(`Question: ${randomNumber1} ${operator} ${randomNumber2}`);
+  const question = {
+    text: `Question: ${operand1} ${operator} ${operand2}`,
+    rightAnswer: String(rightAnswer),
+  };
 
-  const userAnswer = readlineSync.question('Your answer: ');
+  return question;
+};
 
-  if (userAnswer !== rightAnswer.toString()) {
-    errorAnswer(userAnswer, rightAnswer);
-    return 0;
-  }
-
-  console.log('Correct!');
-  return 1;
+export default () => {
+  runEngine(description, generateQuestionAndAnswer);
 };

@@ -1,24 +1,21 @@
-import main from '../index.js';
+import runEngine from '../index.js';
 import getRandomNumber from '../randomNumber.js';
 
-const gameDescription = 'Answer "yes" if the number is even, otherwise answer "no".';
+const description = 'Answer "yes" if the number is even, otherwise answer "no".';
 
-const isEven = (num) => {
-  if (num > 0 && num % 2 === 0) {
-    return 'yes';
-  }
-  return 'no';
-};
+const isEven = (num) => num % 2 === 0;
 
-const gameGenerator = () => {
-  const randomNumber = getRandomNumber();
-  console.log(`Question: ${randomNumber}`);
+const generateQuestionAndAnswer = () => {
+  const gameNumber = getRandomNumber(0, 10000);
 
-  const rightAnswer = isEven(randomNumber);
+  const question = {
+    text: `Question: ${gameNumber}`,
+    rightAnswer: isEven(gameNumber) ? 'yes' : 'no',
+  };
 
-  return rightAnswer;
+  return question;
 };
 
 export default () => {
-  main(gameDescription, gameGenerator);
+  runEngine(description, generateQuestionAndAnswer);
 };

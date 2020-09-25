@@ -1,5 +1,7 @@
-import readlineSync from 'readline-sync';
-import { getRandomNumber, errorAnswer } from '../index.js';
+import runEngine from '../index.js';
+import getRandomNumber from '../randomNumber.js';
+
+const description = 'Find the greatest common divisor of given numbers.';
 
 const gcd = (number1, number2) => {
   // Euclid's algorithm
@@ -17,20 +19,18 @@ const gcd = (number1, number2) => {
   return (num1 + num2);
 };
 
+const generateQuestionAndAnswer = () => {
+  const number1 = getRandomNumber(0, 20);
+  const number2 = getRandomNumber(0, 20);
+
+  const question = {
+    text: `Question: ${number1} ${number2}`,
+    rightAnswer: String(gcd(number1, number2)),
+  };
+
+  return question;
+};
+
 export default () => {
-  const randomNumber1 = getRandomNumber();
-  const randomNumber2 = getRandomNumber();
-  const rightAnswer = gcd(randomNumber1, randomNumber2);
-
-  console.log(`Question: ${randomNumber1} ${randomNumber2}`);
-
-  const userAnswer = readlineSync.question('Your answer: ');
-
-  if (userAnswer !== rightAnswer.toString()) {
-    errorAnswer(userAnswer, rightAnswer);
-    return 0;
-  }
-
-  console.log('Correct!');
-  return 1;
+  runEngine(description, generateQuestionAndAnswer);
 };

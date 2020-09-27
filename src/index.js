@@ -12,13 +12,14 @@ export default (description, generateQuestionAndAnswer) => {
   console.log(description);
 
   for (let i = 0; i < numberOfQuestions; i += 1) {
-    const question = generateQuestionAndAnswer();
-    console.log(question.text);
+    const { text, rightAnswer } = generateQuestionAndAnswer();
+
+    console.log(`Question: ${text}`);
 
     const userAnswer = readlineSync.question('Your answer: ');
 
-    if (userAnswer !== question.rightAnswer) {
-      console.log(`"${userAnswer}" is wrong answer ;(. Correct answer was "${question.rightAnswer}".`);
+    if (userAnswer !== rightAnswer) {
+      console.log(`"${userAnswer}" is wrong answer ;(. Correct answer was "${rightAnswer}".`);
       console.log(`Let's try again, ${playerName}!`);
       return;
     }

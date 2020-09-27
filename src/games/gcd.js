@@ -23,12 +23,10 @@ const generateQuestionAndAnswer = () => {
   const number1 = getRandomNumber(0, 20);
   const number2 = getRandomNumber(0, 20);
 
-  const question = {
-    text: `Question: ${number1} ${number2}`,
+  return {
+    text: `${number1} ${number2}`,
     rightAnswer: String(gcd(number1, number2)),
   };
-
-  return question;
 };
 
 export default () => {

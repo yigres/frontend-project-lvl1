@@ -4,8 +4,8 @@ import getRandomNumber from '../randomNumber.js';
 const description = 'Answer "yes" if given number is prime. Otherwise answer "no".';
 
 const isPrime = (num) => {
-  if (num === 0) {
-    return 'no';
+  if (num < 2) {
+    return false;
   }
 
   for (let i = 2; i < Math.sqrt(num); i += 1) {
@@ -20,12 +20,10 @@ const isPrime = (num) => {
 const generateQuestionAndAnswer = () => {
   const number = getRandomNumber(0, 100);
 
-  const question = {
-    text: `Question: ${number}`,
+  return {
+    text: `${number}`,
     rightAnswer: isPrime(number) ? 'yes' : 'no',
   };
-
-  return question;
 };
 
 export default () => {

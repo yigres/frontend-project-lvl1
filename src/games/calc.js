@@ -2,33 +2,29 @@ import runEngine from '../index.js';
 import getRandomNumber from '../randomNumber.js';
 
 const description = 'What is the result of the expression?';
-
-const generateQuestionAndAnswer = () => {
-  const operators = ['+', '-', '*'];
-  const operand1 = getRandomNumber(0, 20);
-  const operand2 = getRandomNumber(0, 20);
-  const operator = operators[Math.floor(Math.random() * operators.length)];
-  let rightAnswer = 0;
-
+const operators = ['+', '-', '*'];
+const calculate = (operand1, operand2, operator) => {
   switch (operator) {
     case '+':
-      rightAnswer = operand1 + operand2;
-      break;
+      return operand1 + operand2;
     case '-':
-      rightAnswer = operand1 - operand2;
-      break;
+      return operand1 - operand2;
     case '*':
-      rightAnswer = operand1 * operand2;
-      break;
-    // no default
+      return operand1 * operand2;
+    default:
+      throw new Error(`Unknown operator: '${operator}'!`);
   }
+};
 
-  const question = {
-    text: `Question: ${operand1} ${operator} ${operand2}`,
-    rightAnswer: String(rightAnswer),
+const generateQuestionAndAnswer = () => {
+  const operand1 = getRandomNumber(0, 20);
+  const operand2 = getRandomNumber(0, 20);
+  const operator = operators[getRandomNumber(0, 2)];
+
+  return {
+    text: `${operand1} ${operator} ${operand2}`,
+    rightAnswer: String(calculate(operand1, operand2, operator)),
   };
-
-  return question;
 };
 
 export default () => {

@@ -2,28 +2,31 @@ import runEngine from '../index.js';
 import getRandomNumber from '../randomNumber.js';
 
 const description = 'What number is missing in the progression?';
+const progressionLength = 10;
 
-const generateQuestionAndAnswer = () => {
-  const progressionArray = [];
-  const number1 = getRandomNumber(0, 10);
-  const difference = getRandomNumber(0, 10);
-  const progressionLength = 10;
+const getProrgression = (number1, difference, length) => {
+  const progression = [];
 
-  for (let i = 0; i < progressionLength; i += 1) {
-    progressionArray[i] = number1 + i * difference;
+  for (let i = 0; i < length; i += 1) {
+    progression[i] = number1 + i * difference;
   }
 
-  const randomIndex = getRandomNumber(0, progressionLength);
-  const rightAnswer = progressionArray.splice(randomIndex, 1, '..');
+  return progression;
+};
 
-  const progression = progressionArray.join(' ');
+const generateQuestionAndAnswer = () => {
+  const number1 = getRandomNumber(0, 10);
+  const difference = getRandomNumber(0, 10);
 
-  const question = {
-    text: `Question: ${progression}`,
+  const progression = getProrgression(number1, difference, progressionLength);
+
+  const hiddenElementIndex = getRandomNumber(0, progressionLength - 1);
+  const rightAnswer = progression.splice(hiddenElementIndex, 1, '..');
+
+  return {
+    text: `${progression.join(' ')}`,
     rightAnswer: String(rightAnswer),
   };
-
-  return question;
 };
 
 export default () => {

@@ -9,7 +9,7 @@ const generateQuestionAndAnswer = () => {
   const number = getRandomNumber(0, 10000);
 
   return {
-    text: `${number}`,
+    qustion: String(number),
     rightAnswer: isEven(number) ? 'yes' : 'no',
   };
 };

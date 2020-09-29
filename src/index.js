@@ -12,9 +12,9 @@ export default (description, generateQuestionAndAnswer) => {
   console.log(description);
 
   for (let i = 0; i < numberOfQuestions; i += 1) {
-    const { text, rightAnswer } = generateQuestionAndAnswer();
+    const { qustion, rightAnswer } = generateQuestionAndAnswer();
 
-    console.log(`Question: ${text}`);
+    console.log(`Question: ${qustion}`);
 
     const userAnswer = readlineSync.question('Your answer: ');
 

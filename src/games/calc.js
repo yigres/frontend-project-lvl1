@@ -19,10 +19,10 @@ const calculate = (operand1, operand2, operator) => {
 const generateQuestionAndAnswer = () => {
   const operand1 = getRandomNumber(0, 20);
   const operand2 = getRandomNumber(0, 20);
-  const operator = operators[getRandomNumber(0, 2)];
+  const operator = operators[getRandomNumber(0, operators.length - 1)];
 
   return {
-    text: `${operand1} ${operator} ${operand2}`,
+    qustion: `${operand1} ${operator} ${operand2}`,
     rightAnswer: String(calculate(operand1, operand2, operator)),
   };
 };

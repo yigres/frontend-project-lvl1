@@ -24,7 +24,7 @@ const generateQuestionAndAnswer = () => {
   const number2 = getRandomNumber(0, 20);
 
   return {
-    text: `${number1} ${number2}`,
+    qustion: `${number1} ${number2}`,
     rightAnswer: String(gcd(number1, number2)),
   };
 };

@@ -24,7 +24,7 @@ const generateQuestionAndAnswer = () => {
   const rightAnswer = progression.splice(hiddenElementIndex, 1, '..');
 
   return {
-    text: `${progression.join(' ')}`,
+    qustion: progression.join(' '),
     rightAnswer: String(rightAnswer),
   };
 };

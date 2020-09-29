@@ -21,7 +21,7 @@ const generateQuestionAndAnswer = () => {
   const number = getRandomNumber(0, 100);
 
   return {
-    text: `${number}`,
+    qustion: String(number),
     rightAnswer: isPrime(number) ? 'yes' : 'no',
   };
 };

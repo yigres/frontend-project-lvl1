@@ -13,18 +13,17 @@ Brain Games - a set of 5 console games built on the principle of popular mobile 
 * [brain-progression](#brain-progression)
 * [brain-prime](#brain-prime)  
 ---
-Installation  
+## Installation  
 ```bs
 $ git clone git@github.com:yigres/frontend-project-lvl1.git
 $ cd frontend-project-lvl1
-$ make install
 $ npm link  
 ```
 ---
 
 ### brain-even 
 ([Brain-games](#Brain-games))
-[![asciicast](https://asciinema.org/a/359811.svg)](https://asciinema.org/a/359811)
+[![asciicast](https://asciinema.org/a/412583.svg)](https://asciinema.org/a/412583)  
     
 ### brain-calc  
 ([Brain-games](#Brain-games))
